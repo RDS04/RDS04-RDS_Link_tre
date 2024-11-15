@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Reyhan_Gming</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-image">
+            <video id="profileVideo" src="profil.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <div class="profile-info">
+            <h3>Reyhan_Gming</h3>
+            <h3>Social Media</h3>
+            <div class="buttons">
+                <a class="button-subscribe"
+                    href="https://www.youtube.com/channel/UC445Pj7kqXKNkGWnBRpa84w">Subscribe</a>
+                <a class="button-share" href=""><i data-feather="bell"></i></a>
+            </div>
+        </div>
+        <div class="links">
+            <a href="https://saweria.co/ReyhanSyaputra" class="link-button">
+                <img src="saweria.png" alt="Saweria Logo">Saweria
+            </a>
+            <a href="https://www.instagram.com/rehan_saputra_04/" class="link-button">
+                <img src="ig.png" alt="Instagram Logo">Instagram
+            </a>
+            <a href="https://www.tiktok.com/@rds_done_gming" class="link-button">
+                <img src="titod.png" alt="TikTok Logo">Tiktok
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100021657608465" class="link-fb">
+                <img src="download (2).png" alt="">Facebook
+            </a>
+            <a href="https://discord.gg/PmraQ9Qy" class="link-fb">
+                <img src="discord.jpg" alt="">Discord
+            </a>
+            <a href="https://portalmhs.metamedia.ac.id/login" class="link-fb">
+                <img src="metau.jpeg" alt="">Portal Kampus
+            </a>
+            <a href="https://lms.metamedia.ac.id/" class="link-fb">
+                <img src="metau.jpeg" alt="">LMS Metamedia
+            </a>
+            <a href="" class="link-button">
+                <img src="game.jpeg" alt="">Joki Rank Coming Soon
+            </a>
+        </div>
+        <div class="linktree">
+            <p>Linkteer*_*</p>
+        </div>
+        <div class="hakcipta">
+            <p>Reyhan Dwi Syaputra</p>
+        </div>
+    </div>
+    <script>
+        // Memastikan video autoplay berjalan
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('profileVideo');
+            
+            // Mencoba memulai video
+            let playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay berhasil
+                    console.log("Video autoplay berhasil");
+                })
+                .catch(error => {
+                    // Autoplay gagal - coba mulai video dengan interaksi user
+                    console.log("Video autoplay gagal:", error);
+                    
+                    // Tambahkan event listener untuk memulai video saat ada interaksi
+                    document.addEventListener('click', function() {
+                        video.play();
+                    }, { once: true });
+                });
+            }
+            
+            // Memastikan video tetap berjalan saat tab tidak aktif
+            document.addEventListener("visibilitychange", function() {
+                if (document.hidden) {
+                    video.pause();
+                } else {
+                    video.play();
+                }
+            });
+        });
+    </script>
+    
+    
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>

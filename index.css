@@ -1,0 +1,395 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Animation Keyframes */
+@keyframes grain {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(5%, 5%) scale(1.1);
+    }
+
+    50% {
+        transform: translate(-5%, 2%) scale(0.95);
+    }
+
+    75% {
+        transform: translate(2%, -5%) scale(1.05);
+    }
+}
+
+@keyframes retroGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gridMove {
+    0% {
+        transform: rotateX(45deg) translateY(0);
+    }
+
+    100% {
+        transform: rotateX(45deg) translateY(-40px);
+    }
+}
+
+@keyframes containerFloat {
+
+    0%,
+    100% {
+        transform: translateZ(0) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateZ(20px) rotateX(2deg);
+    }
+}
+
+@keyframes textGlitch {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    98% {
+        transform: translate(0);
+    }
+
+    99% {
+        transform: translate(6px, -2px);
+    }
+}
+
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #120458;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    perspective: 1000px;
+}
+
+/* Grid Background */
+body::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-image:
+        linear-gradient(transparent 0%, rgba(255, 0, 200, 0.2) 2%, transparent 3%),
+        linear-gradient(90deg, transparent 0%, rgba(255, 0, 200, 0.2) 2%, transparent 3%);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+    transform: rotateX(45deg);
+    z-index: -2;
+}
+
+/* Noise Overlay */
+body::after {
+    content: '';
+    inset: 0;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.08"/%3E%3C/svg%3E');
+    opacity: 0.15;
+    animation: grain 0.8s steps(1) infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Container Styles */
+.container {
+    width: 400px;
+    height: auto;
+    max-height: 100vh;
+    background: rgba(18, 4, 88, 0.85);
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    animation: containerFloat 6s ease-in-out infinite;
+    box-shadow:
+        0 0 30px rgba(255, 0, 200, 0.3),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        0 0 90px rgba(255, 0, 200, 0.3);
+    margin: 0 auto;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            #ff00c880,
+            #00ffff80,
+            #ff00c880,
+            #00ffff80);
+    background-size: 400% 400%;
+    animation: retroGradient 15s ease infinite;
+    mix-blend-mode: overlay;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 24px;
+    position: relative;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    transform: perspective(1000px) rotateY(0deg);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    margin-top: 10px;
+}
+
+.profile-image:hover {
+    transform: perspective(1000px) rotateY(10deg) translateZ(50px);
+    filter:
+        drop-shadow(-10px 0 20px rgba(255, 0, 200, 0.8)) drop-shadow(10px 0 20px rgba(0, 255, 255, 0.8));
+}
+
+.profile-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile Info */
+.profile-info h3 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    text-shadow:
+        2px 2px #ff00c8,
+        -2px -2px #00ffff;
+    animation: textGlitch 1.8s infinite;
+}
+
+/* Button Styles */
+.button-subscribe {
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #ff00c8;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.button-subscribe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ff00c8, #00ffff, transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.button-subscribe:hover::before {
+    left: 100%;
+}
+
+.button-subscribe:hover {
+    box-shadow:
+        0 0 20px #ff00c8,
+        0 0 40px #00ffff;
+    border-color: #00ffff;
+    transform: translateY(-5px);
+}
+
+/* Links Section */
+.links {
+    margin: 20px 0;
+    max-height: calc(90vh - 400px);
+    overflow-y: auto;
+    padding: 8px;
+    position: relative;
+}
+
+.links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 4px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent,
+            #ff00c8,
+            #00ffff,
+            transparent);
+    opacity: 0.3;
+}
+
+.links::-webkit-scrollbar {
+    width: 4px;
+}
+
+.links::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff00c8, #00ffff);
+    border-radius: 2px;
+}
+
+/* Link Buttons */
+.link-button,
+.link-fb {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 16px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 0, 200, 0.3);
+    transform: perspective(1000px);
+}
+
+.link-button::before,
+.link-fb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 0, 200, 0.2),
+            rgba(0, 255, 255, 0.2),
+            transparent);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.link-button:hover,
+.link-fb:hover {
+    transform: perspective(1000px) translateZ(20px);
+    background: rgba(255, 0, 200, 0.1);
+}
+
+.link-button:hover::before,
+.link-fb:hover::before {
+    opacity: 1;
+}
+
+.link-button img,
+.link-fb img {
+    width: 45px;
+    height: 45px;
+    margin-right: 20px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: all 0.3s;
+    filter: brightness(1.2) contrast(1.2);
+}
+
+.link-button:hover img,
+.link-fb:hover img {
+    border-color: #ff00c8;
+    transform: scale(1.1);
+    filter:
+        brightness(1.4) contrast(1.4) drop-shadow(0 0 10px rgba(255, 0, 200, 0.8));
+}
+
+/* Linktree Text */
+.linktree p {
+    margin-left: 130px;
+    padding: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff00c8, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: retroGradient 3s linear infinite;
+    letter-spacing: 2px;
+}
+.hakcipta p{
+    margin-left: 120px;
+    padding: 8px;
+    font-size: 10px;
+    /* font-weight: 700; */
+    font-style: italic;
+    text-transform: uppercase;
+    color: rgb(170, 160, 160);
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+    /* animation: retroGradient 3s linear infinite; */
+    letter-spacing: 2px;
+}
+
+@media (max-width: 360px) {
+    body {
+        
+        display: block;
+        justify-content: none;
+        align-items: none;
+        overflow-x: none;
+
+    }
+    .linktree p {
+        margin-left: 110px;
+    }
+    .hakcipta p{
+        margin-left: 90px;
+
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        padding-bottom: 100px;
+        margin-left: 10px;
+        padding-top: 0px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .button-subscribe {
+        width: 100%;
+        text-align: center;
+    }
+
+    .links {
+        max-height: calc(100vh - 350px);
+    }
+}
