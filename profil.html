@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Hak Cipta</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5); /* Gradasi latar belakang */
+            color: #333;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+            min-height: 100%; /* Mengatur tinggi minimal agar konten di tengah */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1; /* Pastikan konten di atas latar belakang */
+            overflow: hidden; /* Agar animasi tidak keluar dari kontainer */
+            animation: moveUpDown 2s ease-in-out infinite; /* Animasi bergerak */
+        }
+        @keyframes moveUpDown {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* Gerakan ke atas */
+            }
+            100% {
+                transform: translateY(0); /* Kembali ke posisi semula */
+            }
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #4CAF50; /* Border color */
+            margin-bottom: 20px;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: fadeIn 1s forwards; /* Animasi muncul */
+            animation-delay: 0.5s; /* Delay sebelum animasi dimulai */
+        }
+        h2 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #4CAF50; /* Heading color */
+            opacity: 0; /* Mulai dengan transparan */
+            animation: fadeIn 1s forwards; /* Animasi muncul */
+            animation-delay: 1s; /* Delay sebelum animasi dimulai */
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            line-height: 1.5;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: fadeIn 1s forwards; /* Animasi muncul */
+            animation-delay: 1.5s; /* Delay sebelum animasi dimulai */
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: fadeIn 1s forwards; /* Animasi muncul */
+            animation-delay: 2s; /* Delay sebelum animasi dimulai */
+        }
+
+        /* Animasi untuk efek fade in */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="pp.jpg" alt="Profil Reyhan Syaputra">
+        <h2>Hak Cipta &copy; 2024</h2>
+        <p>Seluruh konten pada situs ini dilindungi oleh undang-undang hak cipta.</p>
+        <p>Penggunaan tanpa izin dapat dikenakan sanksi hukum.</p>
+        <p>Untuk informasi lebih lanjut, silakan hubungi: <a href="mailto:reyhan@example.com">reyhan@example.com</a></p>
+        <footer>
+            <p>Developer: Reyhan Syaputra</p>
+        </footer>
+    </div>
+</body>
+</html>
