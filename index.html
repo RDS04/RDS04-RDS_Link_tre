@@ -12,7 +12,8 @@
 <body>
     <div class="container">
         <div class="profile-image">
-            <video id="profileVideo" src="profil.mp4" autoplay loop muted playsinline></video>
+            <!-- <video id="profileVideo" src="profil.mp4" autoplay loop muted playsinline></video> -->
+            <img src="profil.jpg" alt="">
         </div>
         <div class="profil">
             <a href="profil.html">
@@ -32,8 +33,11 @@
             <a href="https://saweria.co/ReyhanSyaputra" class="link-button">
                 <img src="saweria.png" alt="Saweria Logo">Saweria
             </a>
-            <a href="https://www.instagram.com/rehan_saputra_04/" class="link-button">
+            <a href="https://www.instagram.com/pirex_04/" class="link-button">
                 <img src="ig.png" alt="Instagram Logo">Instagram
+            </a>
+            <a href="https://www.instagram.com/window_koding/" class="link-button">
+                <img src="ig.png" alt="Instagram Logo"> Instagram Bisnis
             </a>
             <a href="https://www.tiktok.com/@rds_done_gming" class="link-button">
                 <img src="titod.png" alt="TikTok Logo">Tiktok
@@ -59,9 +63,37 @@
             <a href="https://claude.ai/" class="link-fb">
                 <img src="claude.png" alt="">Cloud Ai
             </a>
+            <a href="https://gemini.google.com/" class="link-fb">
+                <img src="gemini.jpg" alt="">Gemini
+            </a>
             <a href="https://www.blackbox.ai/" class="link-fb">
                 <img src="black bok.jpeg" alt="">Black Box Ai
             </a>
+            <a href="https://www.meta.ai/" class="link-fb">
+                <img src="meta.jpg" alt="">Meta
+            </a>
+            <a href="https://www.perplexity.ai/" class="link-fb">
+                <img src="perplexity.png" alt="">perplexity
+            </a>
+            <a href="https://www.mureka.ai/home" class="link-fb">
+                <img src="mureka.jpg" alt="">Mureka
+            </a>
+            <a href="https://www.freepik.com/ai/image-generator" class="link-fb">
+                <img src="freepik.jpg" alt="">Freepik
+            </a>
+            <a href="https://lumalabs.ai/dream-machine" class="link-fb">
+                <img src="luma.jpg" alt="">lumalabs
+            </a>
+            <a href="https://www.heygen.com/"
+                class="link-fb">
+                <img src="hygen.jpg" alt="">heygen
+            </a>
+           
+            <a href="https://lustycompanion.com/"
+                class="link-fb">
+                <img src="lust.png" alt="">heygen
+            </a>
+           
             <a href="" class="link-button">
                 <img src="game.jpeg" alt="">Joki Rank Coming Soon
             </a>
@@ -75,30 +107,30 @@
     </div>
     <script>
         // Memastikan video autoplay berjalan
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const video = document.getElementById('profileVideo');
-            
+
             // Mencoba memulai video
             let playPromise = video.play();
-            
+
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
                     // Autoplay berhasil
                     console.log("Video autoplay berhasil");
                 })
-                .catch(error => {
-                    // Autoplay gagal - coba mulai video dengan interaksi user
-                    console.log("Video autoplay gagal:", error);
-                    
-                    // Tambahkan event listener untuk memulai video saat ada interaksi
-                    document.addEventListener('click', function() {
-                        video.play();
-                    }, { once: true });
-                });
+                    .catch(error => {
+                        // Autoplay gagal - coba mulai video dengan interaksi user
+                        console.log("Video autoplay gagal:", error);
+
+                        // Tambahkan event listener untuk memulai video saat ada interaksi
+                        document.addEventListener('click', function () {
+                            video.play();
+                        }, { once: true });
+                    });
             }
-            
+
             // Memastikan video tetap berjalan saat tab tidak aktif
-            document.addEventListener("visibilitychange", function() {
+            document.addEventListener("visibilitychange", function () {
                 if (document.hidden) {
                     video.pause();
                 } else {
@@ -107,8 +139,8 @@
             });
         });
     </script>
-    
-    
+
+
     <script>
         feather.replace();
     </script>
